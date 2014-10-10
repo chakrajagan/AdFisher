@@ -20,7 +20,7 @@ treatment2.opt_in()
 ## Set up measurement
 
 measurement = adfisher.Measurement()
-measurement.get_ads(site='bbc', reloads=8, delay=5)
+measurement.get_ads(site='bbc', reloads=8, delay=10)
 
 ## Run Experiment
 
