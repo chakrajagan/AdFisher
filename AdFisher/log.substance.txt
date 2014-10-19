@@ -1,0 +1,110 @@
+config||2||2
+treatnames||substance||null
+assign||0||0||1
+2014-10-10 17:23:56.184700||browserStarted||0||0
+2014-10-10 17:23:56.185118||training-start||0
+2014-10-10 17:23:56.192766||browserStarted||1||1
+2014-10-10 17:23:56.193312||training-start||1
+2014-10-10 17:23:59.681721||optedIn||0||0
+2014-10-10 17:23:59.857131||optedIn||1||1
+2014-10-10 17:24:04.857890||training-end||1
+2014-10-10 17:24:11.026302||http://drugabuse.gov||0||0
+2014-10-10 17:24:17.731181||http://aa.org||0||0
+2014-10-10 17:24:24.412367||http://niaaa.nih.gov||0||0
+2014-10-10 17:24:29.779432||http://justice.gov/dea/||0||0
+2014-10-10 17:24:37.124882||http://drugpolicy.org||0||0
+2014-10-10 17:24:42.126684||training-end||0
+2014-10-10 17:25:07.131243||measurement-start||0
+2014-10-10 17:25:09.877148||measurement-start||1
+ad||1||1||2014-10-10 17:25:20.177393||Damon Dental Braces||www.damonbraces.com/||Get Extraordinary Results w/Damon Braces. Find a Damon Doctor Now.
+ad||1||1||2014-10-10 17:25:20.177393||Technology Relocation||align.com/success||Align helped Russell Reynolds grow their IT infrastructure - Read how!
+ad||1||1||2014-10-10 17:25:20.177393||17.2% 2013 Annuity Return||advisorworld.com/CompareAnnuities||True Investor Returns with no Risk. Find out how with our Free Report.
+2014-10-10 17:25:36.577060||loadtime||0:00:16.698164||1
+2014-10-10 17:25:36.577703||reload||1
+ad||0||0||2014-10-10 17:25:17.482820||Online Content Now on TV||google.com/Chromecast||Stream video and music on your TV wirelessly! Buy now for only $35.
+ad||0||0||2014-10-10 17:25:17.482820||Hey, Sandra Bullock Lied||lifecoolbeauty.com/sandra-secret||Her Fans Are In Shock. Her Huge Secret Is Finally Exposed!
+ad||0||0||2014-10-10 17:25:17.482820||4 Heart Attack Signs||ownahealthyheart.com||These 4 Things Happen Right Before a Heart Attack.
+2014-10-10 17:25:43.878500||loadtime||0:00:26.745570||0
+2014-10-10 17:25:43.878728||reload||0
+ad||1||1||2014-10-10 17:25:47.081865||Technology Relocation||align.com/success||Align helped Russell Reynolds grow their IT infrastructure - Read how!
+ad||1||1||2014-10-10 17:25:47.081865||Arrest Records: 2 Secrets||instantcheckmate.com||1) Enter Name and State. 2) Access Full Background Checks Instantly.
+ad||1||1||2014-10-10 17:25:47.081865||The Greatest Penny Stocks||www.pennypicks.net||Get free daily penny stock alerts. Join now. New pick out soon.
+2014-10-10 17:26:09.640295||loadtime||0:00:23.061626||1
+2014-10-10 17:26:09.640476||reload||1
+ad||0||0||2014-10-10 17:26:07.021172||Hey, Sandra Bullock Lied||lifecoolbeauty.com/sandra-secret||Her Fans Are In Shock. Her Huge Secret Is Finally Exposed!
+ad||0||0||2014-10-10 17:26:07.021172||OtterBox® iPhone 6 Cases||www.otterbox.com||Now Available at OtterBox.com! Drop, Dirt, and Scratch Protection.
+ad||0||0||2014-10-10 17:26:07.021172||Top 7 Laptops On Sale||comparestores.net/Deals||2014 Bestselling Laptops On Sale Compare Latest Deals  Save Big!
+2014-10-10 17:26:35.575248||loadtime||0:00:41.695676||0
+2014-10-10 17:26:35.575435||reload||0
+ad||1||1||2014-10-10 17:26:19.669149||Business Loan||www.cancapital.com||Get Your Business Funded Today $5k to $150K. Apply Now!
+ad||1||1||2014-10-10 17:26:19.669149||The Discover it® Card||www.discovercard.com||Earn Cash Rewards on Purchases with Your Discover it Card. Apply Now!
+ad||1||1||2014-10-10 17:26:19.669149||Capital One® Credit Cards||www.capitalone.com||See if you pre-qualify in 60 sec. Find a card with features you want!
+2014-10-10 17:27:13.658493||loadtime||0:00:54.017311||1
+2014-10-10 17:27:13.658625||reload||1
+ad||0||0||2014-10-10 17:26:55.879165||Hey, Sandra Bullock Lied||lifecoolbeauty.com/sandra-secret||Her Fans Are In Shock. Her Huge Secret Is Finally Exposed!
+ad||0||0||2014-10-10 17:26:55.879165||OtterBox® iPhone 6 Cases||www.otterbox.com||Now Available at OtterBox.com! Drop, Dirt, and Scratch Protection.
+ad||0||0||2014-10-10 17:26:55.879165||4 Heart Attack Signs||ownahealthyheart.com||These 4 Things Happen Right Before a Heart Attack.
+2014-10-10 17:27:23.462084||loadtime||0:00:37.884883||0
+2014-10-10 17:27:23.462257||reload||0
+ad||1||1||2014-10-10 17:27:24.548697||This Will Burn You Up||www.thenewamerica2016.com||Surprising reason Hillary could be among best U.S. Presidents ever.
+ad||1||1||2014-10-10 17:27:24.548697||Pittsburgh Career Inst.||pittsburghcareerinstitute.org/Medical||Quick Path To A Medical Career In 2 Yrs. Or Little As 10 Mo. - Apply!
+ad||1||1||2014-10-10 17:27:24.548697||Opal Events  Summits||www.opalevents.org||Conferences For Healthcare, Pharma, Technology  Finance. Register Now
+2014-10-10 17:27:34.647629||loadtime||0:00:10.987246||1
+2014-10-10 17:27:34.647781||reload||1
+ad||0||0||2014-10-10 17:27:37.504190||Hey, Sandra Bullock Lied||lifecoolbeauty.com/sandra-secret||Her Fans Are In Shock. Her Huge Secret Is Finally Exposed!
+ad||0||0||2014-10-10 17:27:37.504190||OtterBox® iPhone 6 Cases||www.otterbox.com||Now Available at OtterBox.com! Drop, Dirt, and Scratch Protection.
+ad||0||0||2014-10-10 17:27:37.504190||15-Minute Retirement Plan||www.fi.com||Download Our Free Guide For Investors with $500k+ Portfolios
+2014-10-10 17:28:11.246912||loadtime||0:00:37.783914||0
+2014-10-10 17:28:11.247045||reload||0
+ad||1||1||2014-10-10 17:27:47.944578||Technology Relocation||align.com/success||Align helped Russell Reynolds grow their IT infrastructure - Read how!
+ad||1||1||2014-10-10 17:27:47.944578||Arrest Records: 2 Secrets||instantcheckmate.com||1) Enter Name and State. 2) Access Full Background Checks Instantly.
+ad||1||1||2014-10-10 17:27:47.944578||The Greatest Penny Stocks||www.pennypicks.net||Get free daily penny stock alerts. Join now. New pick out soon.
+2014-10-10 17:28:24.396604||loadtime||0:00:39.747152||1
+2014-10-10 17:28:24.396726||reload||1
+ad||0||0||2014-10-10 17:28:23.067015||Debt Relief Assistance||pennsylvaniadebtrelief.org/Online||$5,000-$130,000+ Debt. See If You Qualify. See Your Savings! Start
+ad||0||0||2014-10-10 17:28:23.067015||This Will Burn You Up||www.thenewamerica2016.com||Surprising reason Hillary could be among best U.S. Presidents ever.
+ad||0||0||2014-10-10 17:28:23.067015||Bad Credit Loans Approved||unitedlendingservices.com||Up To $20,000 - Bad Credit Accepted Apply Now.
+2014-10-10 17:28:32.881727||loadtime||0:00:11.632914||0
+2014-10-10 17:28:32.881933||reload||0
+ad||1||1||2014-10-10 17:28:35.671959||Technology Relocation||align.com/success||Align helped Russell Reynolds grow their IT infrastructure - Read how!
+ad||1||1||2014-10-10 17:28:35.671959||Arrest Records: 2 Secrets||instantcheckmate.com||1) Enter Name and State. 2) Access Full Background Checks Instantly.
+ad||1||1||2014-10-10 17:28:35.671959||Free Resume Templates||free-template.smartresumewizard.com||1) Create A Resume In Minutes 2) Export to Word or PDF in seconds
+2014-10-10 17:28:40.025369||loadtime||0:00:05.627246||1
+2014-10-10 17:28:40.025888||reload||1
+ad||0||0||2014-10-10 17:28:44.447433||Debt Relief Assistance||pennsylvaniadebtrelief.org/Online||$5,000-$130,000+ Debt. See If You Qualify. See Your Savings! Start
+ad||0||0||2014-10-10 17:28:44.447433||This Will Burn You Up||www.thenewamerica2016.com||Surprising reason Hillary could be among best U.S. Presidents ever.
+ad||0||0||2014-10-10 17:28:44.447433||Bad Credit Loans Approved||unitedlendingservices.com||Up To $20,000 - Bad Credit Accepted Apply Now.
+2014-10-10 17:28:49.450006||loadtime||0:00:06.566475||0
+2014-10-10 17:28:49.450203||reload||0
+ad||1||1||2014-10-10 17:28:50.451097||Technology Relocation||align.com/success||Align helped Russell Reynolds grow their IT infrastructure - Read how!
+ad||1||1||2014-10-10 17:28:50.451097||Arrest Records: 2 Secrets||instantcheckmate.com||1) Enter Name and State. 2) Access Full Background Checks Instantly.
+ad||1||1||2014-10-10 17:28:50.451097||The Greatest Penny Stocks||www.pennypicks.net||Get free daily penny stock alerts. Join now. New pick out soon.
+2014-10-10 17:28:54.741011||loadtime||0:00:04.713717||1
+2014-10-10 17:28:54.741174||reload||1
+ad||0||0||2014-10-10 17:29:00.137513||Hey, Sandra Bullock Lied||lifecoolbeauty.com/sandra-secret||Her Fans Are In Shock. Her Huge Secret Is Finally Exposed!
+ad||0||0||2014-10-10 17:29:00.137513||OtterBox® iPhone 6 Cases||www.otterbox.com||Now Available at OtterBox.com! Drop, Dirt, and Scratch Protection.
+ad||0||0||2014-10-10 17:29:00.137513||Top 7 Laptops On Sale||comparestores.net/Deals||2014 Bestselling Laptops On Sale Compare Latest Deals  Save Big!
+2014-10-10 17:29:05.017107||loadtime||0:00:05.565546||0
+2014-10-10 17:29:05.017279||reload||0
+ad||1||1||2014-10-10 17:29:10.200881||Business Loan||www.cancapital.com||Get Your Business Funded Today $5k to $150K. Apply Now!
+ad||1||1||2014-10-10 17:29:10.200881||The Discover it® Card||www.discovercard.com||Earn Cash Rewards on Purchases with Your Discover it Card. Apply Now!
+ad||1||1||2014-10-10 17:29:10.200881||Student Loan Forgiveness||studentzoom.com||Pick your new payment plan Payments as low as $5 month
+2014-10-10 17:29:31.594740||loadtime||0:00:26.851845||1
+2014-10-10 17:29:31.594883||reload||1
+2014-10-10 17:29:36.596257||measurement-end||1
+ad||0||0||2014-10-10 17:29:20.278200||Dream Of Medical Career?||pittsburghcareerinstitute.org/Medical||If You're Caring And Compassionate, Start A Rewarding Medical Career!
+ad||0||0||2014-10-10 17:29:20.278200||Blocked Arteries?||www.clinlife.com/Atherosclerosis||Learn more about a Research Study for Heart Related Conditions.
+ad||0||0||2014-10-10 17:29:20.278200||Hey, Sandra Bullock Lied||lifecoolbeauty.com/sandra-secret||Her Fans Are In Shock. Her Huge Secret Is Finally Exposed!
+2014-10-10 17:29:44.960868||loadtime||0:00:29.941519||0
+2014-10-10 17:29:44.961001||reload||0
+2014-10-10 17:29:49.962511||measurement-end||0
+assign||1||0||1
+2014-10-10 17:29:53.302833||browserStarted||0||0
+2014-10-10 17:29:53.303207||training-start||0
+2014-10-10 17:29:53.307085||browserStarted||1||1
+2014-10-10 17:29:53.307429||training-start||1
+2014-10-10 17:29:57.585270||optedIn||1||1
+2014-10-10 17:29:57.593723||optedIn||0||0
+2014-10-10 17:30:02.587598||training-end||1
+2014-10-10 17:30:09.082892||http://drugabuse.gov||0||0
+2014-10-10 17:30:15.804553||http://aa.org||0||0
