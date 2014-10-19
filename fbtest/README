@@ -1,0 +1,3 @@
+fbtest2.py works!
+usage:
+python fbtest2.py [email] [password]
