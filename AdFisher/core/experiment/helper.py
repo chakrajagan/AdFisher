@@ -125,8 +125,8 @@ def login2Google(username, password, driver):
 def login2fb (driver,id, treatmentid):
 	driver.get('http://www.facebook.com') # Load page 
 	elem = driver.find_element_by_name("email") # Find the query box 
+	ps = driver.find_element_by_name("pass") # Find the query box
 	elem.send_keys("chakra.jagan") 
-	ps = driver.find_element_by_name("pass") # Find the query box 
 	ps.send_keys("test123" + Keys.RETURN)
 	log("fblogin||"+str(treatmentid), id)
 
