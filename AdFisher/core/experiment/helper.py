@@ -354,6 +354,8 @@ def collect_ads(reloads, delay, file, driver, id, treatmentid, site):
 					save_ads_reuters(file, driver, id, treatmentid)
 				elif(site == 'bloomberg'):
 					save_ads_bloomberg(file, driver, id, treatmentid)
+				elif(site == 'facebook'):
+					save_ads_facebook(file, driver, id, treatmentid)
 				else:
 					raw_input("No such site found: %s!" % site)
 				e = datetime.now()
@@ -491,6 +493,31 @@ def save_ads_bbc(file, driver, id, treatmentid):
 		t = strip_tags("ad||"+str(id)+"||"+str(treatmentid)+"||"+time+"||"+t+"||"+l+"||"+b).encode("utf8")
 		fo = open(file, "a")
 		fo.write(t + '\n')
+		fo.close()
+
+def save_ads_facebook(file, driver, id, treatmentid):
+	sys.stdout.write(".")
+	sys.stdout.flush()
+# 		global ad_int
+	driver.set_page_load_timeout(60)
+	driver.get('http://www.facebook.com')
+	time = str(datetime.now())
+	els = driver.find_elements_by_class_name("ego_unit")
+	for el in els:
+		t = el.find_elements_by_class_name("_5vwh")
+		title = t[0].find_element_by_css_selector("strong").get_attribute('innerHTML')
+		
+		l = el.find_elements_by_class_name("_4xvg")
+		link = ""
+		if len(l) > 0:
+			link = l[0].get_attribute('innerHTML')
+
+		b = el.find_elements_by_class_name("_5vwk")
+		content = b[0].get_attribute('innerHTML')
+
+		oneAd = strip_tags("ad||"+str(id)+"||"+str(treatmentid)+"||"+time+"||"+title+"||"+link+"||"+content).encode("utf8")
+		fo = open(file, "a")
+		fo.write(oneAd + '\n')
 		fo.close()
 
 # Sweeney's experiment
