@@ -59,6 +59,10 @@ def applyTreatment(driver, treatmentprof, id, treatmentid):
 			train_with_sites(chunks[1], driver, id, treatmentid)
 		if(chunks[0] == 'gender'):
 			set_gender(chunks[1], driver, id, treatmentid)
+		if(chunks[0] == 'fblogin'):
+			login2fb(driver, id, treatmentid)
+		if(chunks[0] == 'fbvisit'):
+			visitfb(driver, id, treatmentid)
 		if(chunks[0] == 'age'):
 			set_age(int(chunks[1]), driver, id, treatmentid)
 		if(chunks[0] == 'interest'):
@@ -117,6 +121,19 @@ def login2Google(username, password, driver):
 	driver.find_element_by_id("signIn").click()
 	driver.find_element_by_id("gbi4i").click()
 	driver.find_element_by_id("gb_71").click()
+
+def login2fb (driver,id, treatmentid):
+	driver.get('http://www.facebook.com') # Load page 
+	elem = driver.find_element_by_name("email") # Find the query box 
+	ps = driver.find_element_by_name("pass") # Find the query box
+	elem.send_keys("chakra.jagan") 
+	ps.send_keys("test123" + Keys.RETURN)
+	log("fblogin||"+str(treatmentid), id)
+
+def visitfb (driver,id, treatmentid):
+	driver.get('http://www.facebook.com') # Load page 
+	log("fbvisit||"+str(treatmentid), id)
+
 
 def set_gender(gender, driver, id, treatmentid):										# Set gender on Google Ad Settings page
 	try:

@@ -77,6 +77,20 @@ class Treatment:
 			self.str += "|+|rinterest|:|"+interest
 		self.count += 1
 
+	def login2fb(self):
+		if(self.count==0):
+			self.str += "fblogin|:|"
+		else:
+			self.str += "|+|fblogin|:|"
+		self.count += 1
+	
+	def visitfb(self):
+		if(self.count==0):
+			self.str += "fbvisit|:|"
+		else:
+			self.str += "|+|fbvisit|:|"
+		self.count += 1
+
 class Measurement:
 
 	def __init__(self):
