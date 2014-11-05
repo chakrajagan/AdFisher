@@ -126,8 +126,8 @@ def login2fb (driver,id, treatmentid):
 	driver.get('http://www.facebook.com') # Load page 
 	elem = driver.find_element_by_name("email") # Find the query box 
 	ps = driver.find_element_by_name("pass") # Find the query box
-	elem.send_keys("chakra.jagan") 
-	ps.send_keys("test123" + Keys.RETURN)
+	elem.send_keys("") 
+	ps.send_keys("" + Keys.RETURN)
 	log("fblogin||"+str(treatmentid), id)
 
 def visitfb (driver,id, treatmentid):
@@ -504,16 +504,20 @@ def save_ads_facebook(file, driver, id, treatmentid):
 	time = str(datetime.now())
 	els = driver.find_elements_by_class_name("ego_unit")
 	for el in els:
+		title = ""
 		t = el.find_elements_by_class_name("_5vwh")
-		title = t[0].find_element_by_css_selector("strong").get_attribute('innerHTML')
+		if len(t) > 0:
+			title = t[0].find_element_by_css_selector("strong").get_attribute('innerHTML')
 		
 		l = el.find_elements_by_class_name("_4xvg")
 		link = ""
 		if len(l) > 0:
 			link = l[0].get_attribute('innerHTML')
 
+		content = ""
 		b = el.find_elements_by_class_name("_5vwk")
-		content = b[0].get_attribute('innerHTML')
+		if len(b) > 0:
+			content = b[0].get_attribute('innerHTML')
 
 		oneAd = strip_tags("ad||"+str(id)+"||"+str(treatmentid)+"||"+time+"||"+title+"||"+link+"||"+content).encode("utf8")
 		fo = open(file, "a")

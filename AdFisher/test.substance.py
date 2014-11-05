@@ -18,11 +18,11 @@ treatment2.opt_in()
 ## Set up measurement
 
 measurement = adfisher.Measurement()
-measurement.get_ads(site='bbc', reloads=10, delay=5)
+measurement.get_ads(site='facebook', reloads=10, delay=5)
 
 ## Run Experiment
 
-adfisher.run_experiment(treatments=[treatment1, treatment2], measurement=measurement, 
+adfisher.run_experiment(treatments=[treatment2, treatment1], measurement=measurement, 
 	agents=2, blocks=20, log_file=log_file, timeout=500)
 	
 ## Analyze Data
