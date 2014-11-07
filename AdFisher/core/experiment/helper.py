@@ -61,6 +61,8 @@ def applyTreatment(driver, treatmentprof, id, treatmentid):
 			set_gender(chunks[1], driver, id, treatmentid)
 		if(chunks[0] == 'fblogin'):
 			login2fb(driver, id, treatmentid)
+		if(chunks[0] == 'fblogin2'):
+			login2fb2(driver, id, treatmentid)
 		if(chunks[0] == 'fbvisit'):
 			visitfb(driver, id, treatmentid)
 		if(chunks[0] == 'age'):
@@ -126,9 +128,17 @@ def login2fb (driver,id, treatmentid):
 	driver.get('http://www.facebook.com') # Load page 
 	elem = driver.find_element_by_name("email") # Find the query box 
 	ps = driver.find_element_by_name("pass") # Find the query box
-	elem.send_keys("") 
-	ps.send_keys("" + Keys.RETURN)
+	elem.send_keys("klchchottf@gmail.com") 
+	ps.send_keys("Password" + Keys.RETURN)
 	log("fblogin||"+str(treatmentid), id)
+
+def login2fb2 (driver,id, treatmentid):
+	driver.get('http://www.facebook.com') # Load page 
+	elem = driver.find_element_by_name("email") # Find the query box 
+	ps = driver.find_element_by_name("pass") # Find the query box
+	elem.send_keys("klchchottf@gmail.com") 
+	ps.send_keys("Password" + Keys.RETURN)
+	log("fblogin2||"+str(treatmentid), id)
 
 def visitfb (driver,id, treatmentid):
 	driver.get('http://www.facebook.com') # Load page 

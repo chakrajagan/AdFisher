@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: adfisher.aux
+The style file: ieeetr.bst
+Database file #1: ./adfisher.bib
+Warning--empty year in datta
+Warning--empty journal in selenium
+Warning--empty year in selenium
+Warning--empty journal in alexa
+Warning--empty year in alexa
+Warning--empty journal in fbguideline
+Warning--empty year in fbguideline
+You've used 4 entries,
+            1876 wiz_defined-function locations,
+            490 strings with 3918 characters,
+and the built_in function-call counts, 538 in all, are:
+= -- 34
+> -- 16
+< -- 0
++ -- 8
+- -- 4
+* -- 38
+:= -- 89
+add.period$ -- 1
+call.type$ -- 4
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 11
+duplicate$ -- 36
+empty$ -- 69
+format.name$ -- 4
+if$ -- 115
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 4
+newline$ -- 15
+num.names$ -- 4
+pop$ -- 26
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 7
+stack$ -- 0
+substring$ -- 0
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 7
+while$ -- 4
+width$ -- 5
+write$ -- 27
+(There were 7 warnings)
