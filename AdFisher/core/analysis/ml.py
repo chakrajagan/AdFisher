@@ -48,6 +48,9 @@ def select_and_fit_classifier(nfolds, algos, X_train, y_train, splittype, splitf
 	if(blocked==1):
 		X_train = np.array([item for sublist in X_train for item in sublist])
 		y_train = np.array([item for sublist in y_train for item in sublist])
+	print "-------------------"
+	print(X_train)
+	print(y_train)
 	max_clf.fit(X_train, y_train)
 	return max_clf, max_score
 
@@ -61,6 +64,10 @@ def test_accuracy(clf, X_test, y_test, blocked):
 def train_and_test(algos, X, y, splittype='timed', splitfrac=0.1, nfolds=10, blocked=1, 
 		ptest=1, verbose=False):
 	X_train, y_train, X_test, y_test = split_data(X, y, splittype, splitfrac, verbose)
+	
+	print(X_train)
+	print(y_train)
+
 	if(verbose):
 		print "Training Set size: ", len(y_train), "blocks"
 		print "Testing Set size: ", len(y_test), "blocks"
