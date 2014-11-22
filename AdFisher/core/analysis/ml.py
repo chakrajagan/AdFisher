@@ -48,9 +48,6 @@ def select_and_fit_classifier(nfolds, algos, X_train, y_train, splittype, splitf
 	if(blocked==1):
 		X_train = np.array([item for sublist in X_train for item in sublist])
 		y_train = np.array([item for sublist in y_train for item in sublist])
-	print "-------------------"
-	print(X_train)
-	print(y_train)
 	max_clf.fit(X_train, y_train)
 	return max_clf, max_score
 
@@ -196,7 +193,10 @@ def crossVal_algo(k, algo, params, X, y, splittype, splitfrac, blocked, verbose=
 			if(algo=='logit'):
 				clf = LogisticRegression(penalty=p[params.keys().index('penalty')], dual=False, 
 					C=p[params.keys().index('C')])
+
+
 			clf.fit(X_train, y_train)
+
 			score += clf.score(X_test, y_test)
 		score /= k
 		if(verbose):

@@ -7,7 +7,9 @@ import MLfunction as myML
 log_file = "log.substance.txt"
 
 X,y = myML.getData(log_file, verbose=True)
-#print(X)
-#print(y)
+
+print(X)
+print(y)
+#print(feat)
 myML.logisticRegression(X,y)
 #adfisher.run_ml_analysis(log_file, verbose=True)

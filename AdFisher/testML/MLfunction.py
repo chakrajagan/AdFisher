@@ -30,6 +30,28 @@ def getData(log_file="log.txt", splitfrac=0.1, nfolds=10,
 	return X_oneLine, y_oneLine
 	
 def logisticRegression(X,y):
-	clf = LogisticRegression(penalty='l2', dual=False, C=np.logspace(-5.0, 15.0, num=21, base=2))
-	model = clf.fit(X, y)
-	print(model.score(X, y))
+	
+	#validation step
+	"""
+	max = 0
+	for i from 2^-5 to 2^15, i = i * 2
+		clf = LogisticRegression(penalty='l2', dual=False, C=i)
+		model = clf.fit(X_validation(80%), y_validation(80%))
+		acc = model.score(X_validation(20%), y_validation(20%))
+		if acc> max
+			C = i
+			max = acc
+	"""
+	
+	clf = LogisticRegression(penalty='l2', dual=False, C=0.03125)
+	#print(X)
+	#print(y)
+
+	#training
+	model = clf.fit(X[0:20], y[0:20])
+	#print(model.coef_)
+	
+	#testing
+	acc = model.score(X[0:20], y[0:20])
+
+	print(acc)
