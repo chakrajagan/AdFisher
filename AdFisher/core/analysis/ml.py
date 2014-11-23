@@ -62,8 +62,8 @@ def train_and_test(algos, X, y, splittype='timed', splitfrac=0.1, nfolds=10, blo
 		ptest=1, verbose=False):
 	X_train, y_train, X_test, y_test = split_data(X, y, splittype, splitfrac, verbose)
 	
-	print(X_train)
-	print(y_train)
+	#print(X_train)
+	#print(y_train)
 
 	if(verbose):
 		print "Training Set size: ", len(y_train), "blocks"
