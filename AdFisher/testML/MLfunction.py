@@ -131,8 +131,8 @@ def enumeration(X,y,hypoSetSize=20,verbose=True,splitfrac = 0.1,splittype = 'tim
 	X_train = np.array([item for sublist in X_train for item in sublist])
 	y_train = np.array([item for sublist in y_train for item in sublist])
 	
-	X_test = np.array([item for sublist in X_test for item in sublist])
-	y_test = np.array([item for sublist in y_test for item in sublist])
+	X_test2 = np.array([item for sublist in X_test for item in sublist])
+	y_test2 = np.array([item for sublist in y_test for item in sublist])
 
 	hypoSet = genHypoSet(hypoSetSize,X_train,y_train)
 	
@@ -140,9 +140,9 @@ def enumeration(X,y,hypoSetSize=20,verbose=True,splitfrac = 0.1,splittype = 'tim
 
 	dontKnowData = set()
 	keep_hypo = []
-	for i in range(0,len(X_test)):
-		oneX = X_test[i]
-		oneY = y_test[i]
+	for i in range(0,len(X_test2)):
+		oneX = X_test2[i]
+		oneY = y_test2[i]
 		
 		allSame = True
 		predictFirst = hypoSet[0].predict(oneX)
@@ -183,8 +183,11 @@ def enumeration(X,y,hypoSetSize=20,verbose=True,splitfrac = 0.1,splittype = 'tim
 	if(len(keep_hypo)==0):
 		keep_hypo.append(hypoSet[0])
 
-	acc , dontknow = getAbstainAccuracy(X_test,y_test,keep_hypo[0],dontKnowData)
+	acc , dontknow = getAbstainAccuracy(X_test2,y_test2,keep_hypo[0],dontKnowData)
 	print("acc: "+str(acc) +", don't know: " + str(dontknow))
+
+	pvalue = stat.block_p_test(X_test, y_test, keep_hypo[0])
+    
 
 def RelaxedEnumeration(X,y,hypoSetSize=20,verbose=True,errRatio=0.1,splitfrac = 0.1,splittype = 'timed'):
 	
@@ -194,8 +197,8 @@ def RelaxedEnumeration(X,y,hypoSetSize=20,verbose=True,errRatio=0.1,splitfrac = 
 	X_train = np.array([item for sublist in X_train for item in sublist])
 	y_train = np.array([item for sublist in y_train for item in sublist])
 	
-	X_test = np.array([item for sublist in X_test for item in sublist])
-	y_test = np.array([item for sublist in y_test for item in sublist])
+	X_test2 = np.array([item for sublist in X_test for item in sublist])
+	y_test2 = np.array([item for sublist in y_test for item in sublist])
 
 	hypoSet = genHypoSet(hypoSetSize,X_train,y_train)
 	
@@ -208,9 +211,9 @@ def RelaxedEnumeration(X,y,hypoSetSize=20,verbose=True,errRatio=0.1,splitfrac = 
 	keep_hypo = []
 	dontKnowData = set()
 	
-	for i in range(0,len(X_test)):
-		oneX = X_test[i]
-		oneY = y_test[i]
+	for i in range(0,len(X_test2)):
+		oneX = X_test2[i]
+		oneY = y_test2[i]
 
 		predictP=0
 		predictN=0
@@ -262,8 +265,12 @@ def RelaxedEnumeration(X,y,hypoSetSize=20,verbose=True,errRatio=0.1,splitfrac = 
 	if(len(keep_hypo)==0):
 		keep_hypo.append(hypoSet[0])
 
-	acc , dontknow = getAbstainAccuracy(X_test,y_test,keep_hypo[0],dontKnowData)
+	acc , dontknow = getAbstainAccuracy(X_test2,y_test2,keep_hypo[0],dontKnowData)
 	print("acc: "+str(acc) +", don't know: " + str(dontknow))
+
+	pvalue = stat.block_p_test(X_test, y_test, keep_hypo[0])
+    
+
 
 def MLmethod(X,y,verbose=True,splitfrac = 0.1,splittype = 'timed'):
 	algos = {	
@@ -284,3 +291,6 @@ def MLmethod(X,y,verbose=True,splitfrac = 0.1,splittype = 'timed'):
 
 	print "CVscore: ", CVscore
 	print "Test accuracy: ", ml.test_accuracy(clf, X_test, y_test, 1)
+
+	pvalue = stat.block_p_test(X_test, y_test, clf)
+    

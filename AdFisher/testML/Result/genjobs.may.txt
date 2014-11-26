@@ -1,0 +1,3 @@
+relax   .91    0
+enu     .93    0
+typical .93    0
