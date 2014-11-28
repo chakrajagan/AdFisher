@@ -588,6 +588,10 @@ In the following sections, we will first describe the extension of AdFisher, and
 % floats. This can be corrected via the \fnbelowfloat command of the
 % stfloats package.
 
+\section{Related Work}
+Analysis on Google Ads has been extensively studied by many researchers. Our work was inspired by \cite{datta} in which a tool named AdFisher is used to collect Google ads from different websites by exposing the user to different treatments and analyzing how the treatments correspond to the Ads shown for the users. They conclude that Google Ad-settings is opaque about some features and transparent about other features and these variances lead to seemingly discriminatory ads. Their main results were that when a user visits websites related to substance abuse, he gets significantly different ads as compared to a user who does not visit these websites although the Google Ad-settings page does not show any changes reflecting to the user's interest. Also, when male and female users are exposed to the same treatment, they found that male users get significantly more ads related to high-paying jobs than their female counterparts.
+
+
 \section{Extension on AdFisher}
 In this section, we will describe how to extend AdFisher to Facebook. There are two modules: account authentication and advertisements collection. By using these functions, we can easily analyze the ads on Facebook by AdFisher.
 \subsection{Account Authentication}
@@ -610,7 +614,12 @@ find\_elements\_by\_class\_name("\_5vwk")
 
 After collecting the information including title, hyperlink, and the content of an ad, we store it into the log the file by using the format that AdFisher uses for further analysis.
 
-\begin{figure}[!t]\centering\includegraphics[width=2.0in]{fbad}\caption{An example of Facebook ad.}\label{fb_ad}\end{figure}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.0in]{fbad}
+\caption{An example of Facebook ad.}
+\label{fb_ad}
+\end{figure}
 
 
 \section{Issues on new Facebook accounts}
@@ -626,7 +635,8 @@ In this experiment, the Facebook accounts of Jagannathan and Hsin were used to c
 
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.5}
-\caption{The p-values for different splitfract values. Difference of Ads are measured from different Facebook accounts. }\label{twoaccounts}
+\caption{The p-values for different splitfract values. Difference of Ads are measured from different Facebook accounts. }
+\label{twoaccounts}
 \centering
 \begin{tabular}{|c|c|}
 \hline
@@ -648,7 +658,8 @@ This indicates that the online browsing activity might not have any immediate ef
 
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.5}
-\caption{The p-value for different splitfract values. Difference of Ads are measured from two treatments.}\label{oneaccountClothing}
+\caption{The p-value for different splitfract values. Difference of Ads are measured from two treatments.}
+\label{oneaccountClothing}
 \centering
 \begin{tabular}{|c|c|}
 \hline
@@ -671,6 +682,15 @@ Advertising Guidelines.
 In addition, the next step would be to scale up the experiment for the comparison of different accounts in which ten browsers will be used to collect advertising data over 100 blocks so that a significant number of ads are gathered. The experiment would be set up in such a way that five browsers will login as one user and the other five as another user.
 
 Moreover, the next step for the experiment that finds the relationship between online shopping websites and ads would be to increase the online activities of the users by increasing the number of websites to be visited. Also, the measurement can be scaled up so that more ads can be collected to determine if there is any significant difference in the ads served based on the online activity of the user.
+
+\section{Discussions}
+Several problems were encountered while collecting the data for the first part of the experiment in which the Ads from Facebook were analyzed to ascertain if Facebook ads are in compliance to their privacy policy/guidelines. The list of problems is given below:
+
+In experiments done based on Google ads, no users were needed to be created for the experiment. For our experiment, ads could not be collected without creating profiles on Facebook. This was a major restriction since many profiles had to be created to run a single experiment.
+
+Several new accounts were created to collect Ads but none of them showed any Ads. To improve the activity of these profiles, several Fan Pages were "Liked" and "Followed" and friends were added. Also several websites were visited while the user was logged into Facebook. None of these activities resulted in producing Ads on the new user's Facebook page. This highly restricted the scalability of the experiment since the experiments had to be performed on existing users who had Ads on their Facebook page.
+
+Unlike Google, Facebook doesn't provide the option of viewing what knowledge Facebook has acquired about the user. Therefore, it was impossible to know what information Facebook has gathered based on the user's activity. Also, unlike Google, there is no option to opt-in or opt-out of interest based Ads and no option to view or edit the interests of a particular user. This restricted the use of same profiles for different experiments.
 
 % if have a single appendix:
 %\appendix[Proof of the Zonklar Equations]

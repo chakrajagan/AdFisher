@@ -139,6 +139,7 @@ def block_p_test(oXtest, oytest, clf, alpha=0.01, iterations=1000000):				# bloc
 		if round(Tobs, 10) <= round(Tpi, 10):
 			under += 1
 	print "\nConfidence Interval of p-value:", proportion_confint(under, iterations, alpha, 'beta')
+	print (1.0*under) / (1.0*iterations)
 	return (1.0*under) / (1.0*iterations)
 
 #------------- helper functions for Statistics and Statistical Tests ---------------#
