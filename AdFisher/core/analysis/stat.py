@@ -124,7 +124,7 @@ def block_p_test_mode2(Xtest, ytest, flipped=False, alpha=0.01, iterations=10000
 	print "\nConfidence Interval of p-value:", proportion_confint(under, iterations, alpha, 'beta')
 	return (1.0*under) / (1.0*iterations)
 		
-def block_p_test(oXtest, oytest, clf, alpha=0.01, iterations=1000000):				# block permutation test
+def block_p_test(oXtest, oytest, clf, alpha=0.01, iterations=10000):				# block permutation test
 	blockSize = oXtest.shape[1]
 	blocks = oXtest.shape[0]
 	ypred = np.array([[-1]*blockSize]*blocks)

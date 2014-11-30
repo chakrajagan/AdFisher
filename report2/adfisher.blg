@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: adfisher.aux
+The style file: ieeetr.bst
+Database file #1: ./adfisher.bib
+Warning--entry type for "selenium" isn't style-file defined
+--line 20 of file ./adfisher.bib
+Repeated entry---line 71 of file ./adfisher.bib
+ : @article{selenium
+ :                  ,
+I'm skipping whatever remains of this entry
+Warning--empty year in datta
+You've used 7 entries,
+            1876 wiz_defined-function locations,
+            515 strings with 4551 characters,
+and the built_in function-call counts, 1626 in all, are:
+= -- 154
+> -- 42
+< -- 0
++ -- 18
+- -- 11
+* -- 97
+:= -- 223
+add.period$ -- 6
+call.type$ -- 7
+change.case$ -- 7
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 95
+empty$ -- 186
+format.name$ -- 11
+if$ -- 400
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 6
+newline$ -- 24
+num.names$ -- 7
+pop$ -- 36
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 59
+stack$ -- 0
+substring$ -- 104
+swap$ -- 32
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 16
+width$ -- 8
+write$ -- 60
+(There was 1 error message)

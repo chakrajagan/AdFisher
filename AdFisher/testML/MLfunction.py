@@ -146,11 +146,20 @@ def enumeration(X,y,hypoSetSize=20,verbose=True,splitfrac = 0.1,splittype = 'tim
 		
 		allSame = True
 		predictFirst = hypoSet[0].predict(oneX)
+		pResult = 0
+		nResult = 0
+		if(predictFirst==1):
+			pResult += 1
+		else:
+			nResult += 1
 		for j in range(1,len(hypoSet)):
 			predictVal = hypoSet[j].predict(oneX)
+			if(predictFirst==1):
+				pResult += 1
+			else:
+				nResult += 1
 			if(predictFirst!=predictVal):
 				allSame = False
-				break
 		
 		if(allSame == True):
 			a=1
@@ -166,10 +175,16 @@ def enumeration(X,y,hypoSetSize=20,verbose=True,splitfrac = 0.1,splittype = 'tim
 			"""
 			deleteHypoAry = []
 			for j in range(0,len(hypoSet)):
+				if(pResult > nResult and hypoSet[j].predict(oneX)[0] != 1):
+					deleteHypoAry.append(hypoSet[j])
+				if(pResult < nResult and hypoSet[j].predict(oneX)[0] == 1):
+					deleteHypoAry.append(hypoSet[j])
+
+				"""
 				if(hypoSet[j].predict(oneX) != oneY):
 					#print(hypoSet[j])
 					deleteHypoAry.append(hypoSet[j])
-
+				"""
 			for j in range(0,len(deleteHypoAry)):
 				#print(deleteHypoAry[j])
 				hypoSet.remove(deleteHypoAry[j])
@@ -241,9 +256,18 @@ def RelaxedEnumeration(X,y,hypoSetSize=20,verbose=True,errRatio=0.1,splitfrac = 
 
 		deleteHypoAry = []
 		for cls in hypoSet:
+			if(predictP > predictN and cls.predict(oneX)[0] != 1):
+				deleteHypoAry.append(cls)
+			if(predictP < predictN and cls.predict(oneX)[0] == 1):
+				deleteHypoAry.append(cls)
+
+
+
+			"""
 			if(cls.predict(oneX)[0] != oneY):
 				#print str(cls.predict(oneX)[0]) + " " + str(oneY)
 				deleteHypoAry.append(cls)
+			"""
 		for j in range(0,len(deleteHypoAry)):
 			hypoSet.remove(deleteHypoAry[j])
 			if(len(hypoSet)==1):

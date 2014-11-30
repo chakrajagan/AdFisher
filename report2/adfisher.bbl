@@ -1,0 +1,35 @@
+\begin{thebibliography}{1}
+
+\bibitem{datta}
+{A. Datta, M. C. Tschantz, and A. Datta}, ``{Automated Experiments on Ad
+  Privacy Settings: A Tale of Opacity, Choice, and Discrimination},'' {\em
+  arXiv:1408.6491}.
+
+\bibitem{akshay}
+{Akshay Balsubramani}, ``{The Utility of Abstaining in Binary
+  Classification},'' {\em manuscript}, 2013.
+
+\bibitem{KWIK}
+{Lihong Li and Michael L. Littman and Thomas J. Walsh}, ``{Knows What It Knows:
+  A Framework For Self-Aware Learning},'' {\em {Proceedings of the 25th
+  international conference on Machine learning}}, 2008.
+
+\bibitem{sayedi2010trading}
+A.~Sayedi, M.~Zadimoghaddam, and A.~Blum, ``Trading off mistakes and don't-know
+  predictions,'' in {\em Advances in Neural Information Processing Systems},
+  pp.~2092--2100, 2010.
+
+\bibitem{blaszczynski2009ensembles}
+J.~Blaszczynski, J.~Stefanowski, and M.~Zajac, ``Ensembles of abstaining
+  classifiers based on rule sets,'' in {\em Foundations of Intelligent
+  Systems}, pp.~382--391, Springer, 2009.
+
+\bibitem{pietraszek2005optimizing}
+T.~Pietraszek, ``Optimizing abstaining classifiers using roc analysis,'' in
+  {\em Proceedings of the 22nd international conference on Machine learning},
+  pp.~665--672, ACM, 2005.
+
+\bibitem{selenium}
+SeleniumHQ, ``{SeleniumHQ. [online]. available: http://www.seleniumhq.org/}.''
+
+\end{thebibliography}

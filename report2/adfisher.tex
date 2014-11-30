@@ -77,7 +77,8 @@
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
 
-
+\usepackage{amsmath}
+\usepackage{mathtools}
 % *** MISC UTILITY PACKAGES ***
 %
 %\usepackage{ifpdf}
@@ -194,6 +195,8 @@
 
 % *** SPECIALIZED LIST PACKAGES ***
 %
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 %\usepackage{algorithmic}
 % algorithmic.sty was written by Peter Williams and Rogerio Brito.
 % This package provides an algorithmic environment fo describing algorithms.
@@ -372,7 +375,7 @@
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-\title{An Experiment on Facebook Ads for Testing Sensitive Information Flow}
+\title{Abstain Classifiers for Auditing Online Advertisement Privacy Settings}
 %
 %
 % author names and IEEE memberships
@@ -384,8 +387,7 @@
 % was not built to handle multiple paragraphs
 %
 
-\author{ Jagannathan Chakravarthy and
-        Hsin Miao
+\author{ Hsin Miao, Jagannathan Chakravarthy   
         }% <-this % stops a space
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
@@ -430,7 +432,7 @@
 
 
 % use for special paper notices
-\IEEEspecialpapernotice{\{jchakrav,hsinm\}@andrew.cmu.edu}
+\IEEEspecialpapernotice{\{hsinm,jchakrav\}@andrew.cmu.edu}
 
 
 
@@ -441,7 +443,13 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-We explored the advertisements served on Facebook by extending the AdFisher tool to collect advertisements from Facebook and performed statistical tests on the data obtained to draw conclusion on whether Facebook ads are in compliance to their privacy policy. We investigated this by conducting three experiments in which we tried to gather ads from newly created profiles, collected ads from existing Facebook profiles and collected ads from profiles after exposing them to a particular treatment. We enumerated the results and also elaborated on the problems encountered along the path which hindered scaling up the experiments to obtain statistically significant results. We also presented future steps that can be taken to mitigate some of the problems encountered.
+We propose an auditing framework that can determine whether online advertisement privacy policies are violated.
+The framework utilizes abstaining classifiers, whether they can not only output positive and negative results but also ``I don't know" predictions.
+Such classifiers are useful to reduce the potential cost of privacy policy violation because they can reduce incorrect predictions by reporting `I don't know" outputs to human for auditing.
+We implemented two abstaining classifier algorithms: Ensemble Enumeration and Ensemble Relaxed Enumeration.
+We found that compared to traditional classifier selection algorithms, the performance of the predictions are higher by abstaining classifiers. 
+This project is the first-ever study that combines abstaining classifiers and auditing applications.
+Further explorations including more data and more complex models can be utilized to get more insight into this field.
 
 \end{abstract}
 
@@ -485,12 +493,34 @@ We explored the advertisements served on Facebook by extending the AdFisher tool
 % and "HIS" in caps to complete the first word.
 \IEEEPARstart{T}{he} 
  effectiveness of ad campaigns have inflated due to targeted marketing, which has been made possible through websites which track user data and thereby predict a user's interests. This raises a lot of concerns for the user, who would like to know which set of personal information they provide is used for targeted advertising. For this reason, the websites that acquire or collect the personal information from users tell them which set of this information will be used for targeting and which set is not used through their privacy policy. However, we cannot directly determine whether these policies are complied. They can be ascertained by conducting indirect experiments such as analyzing the ads that the user encounters on the internet. 
+  
+For the companies that provide targeted advertisements, it is impossible to determine whether they violate their privacy policies by human.
+Machine learning algorithms help the companies automatically audit their privacy settings. 
  
-Google and Facebook are two of the largest ad providing platforms. Our work is motivated by Datta et al. \cite{datta} in which experiments were conducted on Google ads. They found some correlations between the user provided data, the websites the user visited and the advertisements they see. The result implies possible violations of Google's privacy policy with respect to use of sensitive information for targeted advertising.
-In our project, we adopted a similar approach given in \cite{datta}, and our goal is to ascertain if Facebook ads are in compliance to their privacy policy/guidelines. 
-We extended the tool \textit{AdFisher} developed by Datta et al. \cite{datta} so that it can automatically login using Facebook accounts, and collect the ads shown on Facebook News Feed.
+Our work is motivated by Datta \textit{et al.} \cite{datta} in which experiments were conducted on Google ads. They developed a tool ``AdFisher" that  can automatically collect advertisements on the Internet. They found some correlations between the user provided data, the websites the user visited and the advertisements they see. The result implies possible violations of Google's privacy policy with respect to use of sensitive information for targeted advertising. 
+ 
+ 
+In this project, we proposed a automated auditing framework using abstain binary classifiers, which belong to online machine learning algorithms.
+Online machine learning algorithms learn one datum at a time, and predict a label from the datum.
+The prediction hypothesis is refined if the true label of the datum is learned.
+Online machine learning models are suitable for the application of auditing online advertisement privacy settings because the cost of frequently training the classifiers for auditing is quite huge.
+By online learning algorithms, the classifiers can be refined (or learned) in the auditing process.
+ 
+Abstaining binary classifiers belong to online machine learning models, where they are allowed to output "I don't know" and refrain from predicting the class label of the given data.
+They may abstain from making a prediction if they are not confident enough for the prediction. 
+Abstaining classifiers are essential in applications of medical diagnosis and fraud risk assessment because incorrect predictions may contribute to fatal consequences\cite{akshay}.
+By utilizing the concept of abstaining classifiers, incorrect predictions are reduced because the classifiers can directly output ``I don't know" if they do not have enough confidence.
+After obtaining the ``I don't know" results, expertise can make accurate judgements.
 
-In the following sections, we will first describe the extension of AdFisher, and then several experiments will be stated. Finally, we will discuss the results and possible future works in the project.
+Abstaining classifiers are also suitable for the application on auditing because the incorrect predictions should be reduced.
+If the violations of privacy policies are detected internally, it is easy to fix the algorithms that provide targeted advertisements; however, such violations found by the users might contribute to huge costs.
+
+We utilized abstaining classifiers to perform the analysis on the data obtained using AdFisher in previous experiments conducted by Datta \textit{et al.} \cite{datta}.
+Abstaining classifiers are integrated into AdFisher to analyze whether the advertisement settings violate their privacy policies.
+The paper is organized as follows. Section II reviews some literatures about the experiments on online advertisement settings, and abstaining classifiers. 
+Section III described the algorithms we implemented.
+We will report the experimental results in Section IV, and state conclusions and future works in Section V.   
+
 
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
@@ -593,110 +623,218 @@ In the following sections, we will first describe the extension of AdFisher, and
 Analysis on Google Ads has been extensively studied by many researchers. Our work was inspired by \cite{datta} in which a tool named AdFisher is used to collect Google ads from different websites by exposing the user to different treatments and analyzing how the treatments correspond to the Ads shown for the users. They conclude that Google Ad-settings is opaque about some features and transparent about other features and these variances lead to seemingly discriminatory ads. Their main results were that when a user visits websites related to substance abuse, he gets significantly different ads as compared to a user who does not visit these websites although the Google Ad-settings page does not show any changes reflecting to the user's interest. Also, when male and female users are exposed to the same treatment, they found that male users get significantly more ads related to high-paying jobs than their female counterparts.
 
 
-\section{Extension on AdFisher}
-In this section, we will describe how to extend AdFisher to Facebook. There are two modules: account authentication and advertisements collection. By using these functions, we can easily analyze the ads on Facebook by AdFisher.
-\subsection{Account Authentication}
-The module will first visit Facebook (www.facebook.com), and the login by typing the Facebook account and password. We obtained the goal by using Selenium \cite{selenium}, the python API used in AdFisher. 
 
-First, we locate the text area that is for account, and then type the account by the using this function: \texttt{email=driver.find\_element\_by\_name("email") email.send\_keys("ACCOUNT") }
+Some literatures regarding abstaining classifiers are introduced as follows.
+Li \textit{et al.} proposed a learning framework ``Know What it Knows" \cite{KWIK} for online learning
+The learning framework is designed to make only accurate predictions although the algorithm can output ``I don't know" for uncertain results.
+Theoretical bound on the number of abstaining is discussed by the authors because such algorithm should satisfy the requirements of accurate predictions and minimum abstaining outputs. 
 
-Second, we use the same way to insert the password into the password area. 
-In order to really login into Facebook, the ``Log In" button on the webpage or the key \textit{return} on the keyboard should be clicked. We use this code  \texttt{Keys.RETURN} in Selenium that simulates a ``click" action of the keyboard to login.
 
-\subsection{Advertisements Collection}
-In the section, we will describe how we collect the ads from Facebook. Figure \ref{fb_ad} is an example of a Facebook Ad. The ad is located in a container where the class name of the container object is `\textit{`ego\_unit"}. The class name of the title of an ad is \textit{``\_5vwh"}; also, the class name of the hyperlink to the ad is \textit{``\_4xvg"}; moreover, the class name of the ad content is \textit{``\_5vwk"}. In the example ad, the ad title is ``SPANX.com Official Site", the hyperlink is ``spanx.com", and the ad content is ``Shop the ... Free  Shipping!"
+In the survey paper written by Balsubramani \cite{akshay}, the utility of abstaining in binary classifiers is explored in which the paper concentrates on the tradeoff between avoiding incorrect predictions and making sufficiently predictions. 
+The paper  \cite{sayedi2010trading} also studies about the tradeoff between "don't know" predictions and making mistakes. It presents an algorithm that minimizes the number of "don't know" predictions bounded by the number of allowed mistakes. 
+In addition, Blaszczyski \textit{et al.} proposed a framework of ensembles of abstain classifiers by rule sets \cite{blaszczynski2009ensembles}. 
+Moreover, the paper \cite{pietraszek2005optimizing} talks about a method to build a specific type of abstaining binary classifier using ROC analysis. The classifiers are built on cost based model, bounded-abstention model and bounded-improvement model. The paper demonstrates the use of these models on reducing misclassification costs.
 
-By analyzing the HTML attributes, we can use Selenium to collect the ads by using the procedure below:
-\texttt{find\_elements\_by\_class\_name("ego\_unit")
-find\_elements\_by\_class\_name("\_5vwh")
-find\_elements\_by\_class\_name("\_4xvg")
-find\_elements\_by\_class\_name("\_5vwk")
-}
+Although algorithms and theoretical bounds of abstain classifiers are discussed in those literatures,  there are few applications based on abstaining classifiers.
+To best of our knowledge, this project is the first one that integrate abstain classifiers into auditing applications.
 
-After collecting the information including title, hyperlink, and the content of an ad, we store it into the log the file by using the format that AdFisher uses for further analysis.
 
-\begin{figure}[!t]
+
+\section{Method}
+\subsection{Automated Auditing Framework for Online Advertisement Settings}
+In this project, we extended the tool ``AdFisher" that abstaining classifiers are integrated. This section first introduces the framework of AdFisher.  
+AdFisher is a tool that can automatically collect online advertisements written by Selenium API \cite{selenium} in Python.
+Users can first set the treatments for some browser agents.
+For example, if we want to determine whether Google Ad-setting is related to discrimination on gender, we can first set different genders in Google Ad-setting page.
+After setting treatments, those browser agents then collect online advertisements on websites.
+
+Analyses are then performed to determine whether privacy policies are violated.
+The collected advertisements for a browser agent are encoded into one agent vector.
+The label of an agent vector is the type of treatment. (e.g. control group or experimental group.)
+Machine learning algorithms are utilized to train a model by training data of the vectors, where the learning models can be evaluated by the accuracy of test data.
+The next step is to determine whether the prediction results form two different groups.
+AdFisher performs permutation tests on the test data, and then report p-value that specifies whether the different treatments contribute to different groups of results.  
+After the analyses processes, advertisement companies can use the results to audit their privacy policies.
+
+\subsection{Abstaining Classifiers}
+The main contribution of the project is to implement abstaining classifiers in AdFisher framework.
+We implemented the classifiers based on ``Know What it Knows" model and the concept of ensemble classifiers.
+There are two algorithms in this project: Ensemble Enumeration and Ensemble Relaxed Enumeration, which will be described in the following paragraphs.
+
+\subsubsection{Ensemble Enumeration} 
+The Ensemble Enumeration works when the hypothesis set $\mathcal{H}$ is finite.
+We first divided the data into training data and testing data, where testing data contains $ \delta \%$ of the entire data set. 
+The training data is used to generate $|\mathcal{H}|$ classifiers.
+Logistic Regression model is chosen in our experiments because Datta \textit{et al.} \cite{datta} found that such model is suitable in online advertisement applications.
+(Note that our abstain classifier framework is flexible that other machine learning models can be easily replaced.)
+In order to obtain the hypothesis set, $|\mathcal{H}|$ regularization parameters in logistic regression are set to generate classifiers.
+
+The Ensemble Enumeration algorithm is described after the hypothesis set $\mathcal{H}$ is generated.
+\begin{algorithm}[h]
+  \caption{Ensemble Enumeration}
+  \begin{algorithmic}[1]
+   \State $\mathcal{V} \gets \mathcal{H}$  
+    \For{$i = 1,2,...$}
+      \If{$h(x_i)$ is the same $\forall h \in \mathcal{V}$}
+      \State Choose any $h \in \mathcal{V}$ and predict $h(x_i)$
+      \Else 
+      \State Output ``I don't know"
+      \State Predict with the majority, i.e. $\hat{y_{i}} = argmax_{\lambda\in \{-1,+1\} } \{h \in \mathcal{V}: h(x_i)=\lambda)\}$
+      \State $\mathcal{V} \gets {h \in \mathcal{V}:h(x_i)=\hat{y_{i}}}$
+      \EndIf
+      \If{$|\mathcal{V}|=1$}
+      \State Terminate with final output $\mathcal{V}$
+      \EndIf
+    \EndFor
+  \end{algorithmic}
+\end{algorithm}
+
+The algorithm works depending on the predictions by the classifiers in the hypothesis set $\mathcal{H}$.
+If the predictions are all identical, the abstaining classifier is confident that the result is correct, so it outputs the prediction directly.
+However, if there is no consensus among the predictions, the abstaining classifier will output ``I don't know", and update the hypothesis set $\mathcal{H}$ by ensemble that keeps the hypotheses with majority predictions. 
+
+Some properties of the algorithm is described as follows.
+The abstention bound in the algorithm is $|\mathcal{H}|-1$ because each time the algorithm outputs an ``I don't know", at least one hypothesis in $\mathcal{V}$ is removed. 
+The ensemble step in the algorithm is to aggregate the prediction results by the hypotheses, and remove some unwanted  hypotheses.
+Although the Ensemble Enumeration algorithm is quite general and simple, the time and space complexity of the algorithm is huge because the size of the hypothesis set $|\mathcal{H}|$ might be very large.
+
+\subsubsection{Ensemble Relaxed Enumeration}
+The assumption of ``Know What it Knows" model is that the learner makes no mistakes, which is a extreme restriction in many circumstances. 
+To mitigate the restriction, the enumeration algorithm was extended to allow up to $k$ mistakes in   Ensemble Relaxed Enumeration algorithm.
+\begin{algorithm}[h]
+  \caption{Ensemble Relaxed Enumeration}
+  \begin{algorithmic}[1]
+   \State $\mathcal{V} \gets \mathcal{H}$, $s \gets |\mathcal{H}|^{k/k+1}$, $m \gets 0$
+    \For{$i = 1,2,...$}
+      \State $\mu = min_{\lambda\in \{-1,+1\}} |\{h \in \mathcal{V}: h(x_i)=\lambda)\}|$, so that $\mu$ is the number of hypotheses in $\mathcal{V}$ predicting the minority label
+      \If{$\mu \leq s$}
+      \State Predict with the majority, i.e. $\hat{y_{i}} = argmax_{\lambda\in \{-1,+1\} } \{h \in \mathcal{V}: h(x_i)=\lambda)\}$
+      \Else 
+      \State Output ``I don't know"
+      \State $\mathcal{V} \gets {h \in \mathcal{V}:h(x_i)=\hat{y_{i}}}$
+      \EndIf
+      \If{$|\mathcal{V}|=1$}
+      \State Terminate with final output $\mathcal{V}$
+      \EndIf
+    \EndFor
+  \end{algorithmic}
+\end{algorithm}
+
+The Ensemble Relaxed Enumeration algorithm tolerates some incorrect predictions. Theoretical bound of the algorithm can be found in the paper \cite{sayedi2010trading}.
+
+\subsection{Traditional Classifiers}
+This section described how traditional classifiers work. 
+We compared the abstaining classifiers to traditional model selection frameworks in the project.
+Traditional model selection frameworks utilize cross validation to select the best model for testing process. 
+Each model is trained and evaluated the prediction results by cross validation, and the hypothesis with the highest accuracy is selected to be the final classifier.
+In our implementation, we used model selection framework to select one of twenty logistic regression classifiers.
+
+\section{Experimental Results}
+In the section, we will first introduce the data we used, and then show the experimental results of abstaining classifiers.
+\subsection{Data Collection and Evaluation Metric}
+We analyzed the data collected by AdFisher. 
+Several treatments on browser agents were set to collect online advertisements, including \textit{mental disorder}, \textit{gender effects on job search}, \textit{cars}, and \textit{dating websites}.
+A treatment is that the browser agents visit some specific websites and then collect online advertisements on websites such as bbc.com.
+For example, the  \textit{cars} treatment is that the browser agent first visits some car websites, and then collects online ads.
+
+We evaluate the accuracy of the results predicted by classifiers. 
+There are two possibilities of high accuracy. The first one is that the treatment is effective, so browser agents for different treatments in ``advertisement space" can be separated clearly by simple models. The second one is that the model is suitable for such kind of data, so although browser agents for different treatments in ``advertisement space" are not separated clearly, we can still use the model to separate the data.
+
+We also evaluate p-value of permutation tests.
+The p-value can be used to determine whether the effect of the treatments is significant.
+If the p-value is smaller than 0.05, we can reject the null hypothesis that the results of two treatments are identical.
+In other words, we can conclude that we have some evidence showing that different treatments contribute to different results by the p-value which is smaller than 0.05. 
+
+
+\subsection{Comparisons between Abstaining Classifiers and Traditional Classifiers}
+Table \ref{mentaldisorder} and \ref{dating} show the prediction accuracy and p-value for different algorithms in the \textit{mental disorder} and \textit{dating} treatments.
+We found that the prediction accuracy in traditional classifiers is low, which is near random prediction. The p-value is high in traditional classifiers. 
+Although by the abstaining classifier we merely obtained slightly higher prediction accuracy, we achieved the p-value smaller than 0.05, so we have some evidence that the \textit{mental disorder} and \textit{dating} treatments contribute to different set of online advertisements.
+
+Table \ref{cars} shows the results in the \textit{cars} treatment.
+The accuracy of the three algorithms are relatively higher compared to the \textit{mental disorder} treatment, and p-values are very small.
+The accuracy in the abstain classifier is higher than traditional classifiers, which shows that abstain classifier algorithms can effectively enhance the performance.
+
+Table \ref{gender} shows the case that the results of prediction accuracy are low, and p-values are high.
+In this case, we have no evidence that the results of different gender treatments on job search are different.
+There are two possibilities to interpret the result. The first one is that the collected online advertisements are not related to gender discrimination. The other one is that it is difficult to separate browser agents in different treatments in the ``advertisement space".
+ 
+\begin{table}[t]
 \centering
-\includegraphics[width=2.0in]{fbad}
-\caption{An example of Facebook ad.}
-\label{fb_ad}
-\end{figure}
-
-
-\section{Issues on new Facebook accounts}
-We will discuss the relationship between a newly created Facebook account and the ads on its News Feed in the section. In the experimental design in our proposal, we would like to create eight accounts and divided them into two groups: control group and experimental group. After different treatments on these two groups, we would like to determine whether there is a statistical difference between the two sets of ads collected by these two groups.
-
-However, we found that there is no ads in a new Facebook account. In contrast, there are two ads in our personal Facebook accounts. If we analyze the ads on our existing Facebook accounts, there must be many confounding factors that affect the results of the experiments. To be more specific, we cannot conclude that the treatments such as visiting shopping websites in our experiments really affect the collected ads because of those confounding factors. In order to ensure the causality of our experiments, we first investigated how to make a new Facebook account show an ad.
-
-The first experiment is to investigate the relationship between the ads and the followed fan pages. Our hypothesis is that the number of followed online-shopping-fan-pages will contribute to online shopping ads on News Feed for a new Facebook account. Because Facebook does not provide the top list of its fan pages, we visited \textit{alexa.com} \cite{alexa} and followed the fan pages of top 50 online clothing shopping websites.  
-
-In the experiment, the account followed a fan page from the list obtained from \textit{alexa.com}, and then collected the ads for twenty reloads. We sequently followed the fan pages by the rank on the list. However, we did not obtain significant results in the experiment. In fact, we did not obtain any ads after following 50 online clothing shopping fan pages. The result shows that following fan pages merely is not enough to show the ads. It implies that there must be other factors that affect the ads on the News Feed for a new Facebook account.  
-\section{Comparison of two accounts}
-In this experiment, the Facebook accounts of Jagannathan and Hsin were used to collect ads. This experiment was done to know if the ads served to the two users were inherently different.  For treatment 1, Jagannathan's profile was used and for treatment 2, Hsin's profile was used. In both the treatments, the users were logged in to Facebook and the ads were collected immediately. The experiment was run for 20 blocks with 10 reloads in each block. The total number of ads collected for each user was 392 and 400 for Hsin and Jagannathan respectively. These ads were subjected to analysis and p-value for this experiment was found for different splitfrac values. Splitfrac value determines what percentages of the samples should be used for training and testing. The results are shown in Table \ref{twoaccounts}. The p-value less than 0.05 is considered a significant value. These results hint at the possibility that the two users were indeed served different ads.
-
-\begin{table}[!t]
-\renewcommand{\arraystretch}{1.5}
-\caption{The p-values for different splitfract values. Difference of Ads are measured from different Facebook accounts. }
-\label{twoaccounts}
-\centering
-\begin{tabular}{|c|c|}
+\caption{Prediction accuracy and p-value for different algorithms in mental disorder treatment}
+\label{mentaldisorder}
+\begin{tabular}{|l|l|l|}
 \hline
-\multicolumn{1}{|l|}{\textbf{splitfrac}} & \multicolumn{1}{l|}{\textbf{p-value}} \\ \hline
-0.1                                      & 0.250191                              \\ \hline
-0.2                                      & 0.062656                              \\ \hline
-0.3                                      & 0.015665                              \\ \hline
-0.4                                      & 0.003931                              \\ \hline
-0.5                                      & 0.00196                               \\ \hline
+Algorithm                    & Accuracy        & p-value         \\ \hline
+Ensemble Enumeration         & 0.505           & 0.4665          \\ \hline
+Ensemble Relaxed Enumeration & \textbf{0.5475} & \textbf{0.0235} \\ \hline
+Traditional Classifiers      & 0.505           & 0.4479          \\ \hline
 \end{tabular}
-
 \end{table}
 
-
-\section{The effect on Online shopping websites}
-In this experiment, the Facebook account of one user was used to collect ads after exposing that user to online shopping (clothing) websites. This was done to determine whether there is a correlation between the ads that are served to the user and the user's online activity. The experiment was set up such that the ads were collected after the user has been exposed to websites related to online shopping in one treatment and in another treatment, the user remained idle and then the ads were collected from Facebook. The experiment was run for 15 blocks with 10 reloads in each block. The total number of ads that were collected for the two treatments were 303 and 296 respectively . These ads were subjected to analysis and p-value for this experiment was found for different splitfrac values. The results are shown in Table \ref{oneaccountClothing}.
-
-This indicates that the online browsing activity might not have any immediate effect on the ads served to the user on Facebook. The reasons for this might be that the number of websites to which the user was exposed to might not be big enough to create a significant impact on the ads served to the user, or that the time needed for the browsing activity to affect the ads served might not be immediate. 
-
-\begin{table}[!t]
-\renewcommand{\arraystretch}{1.5}
-\caption{The p-value for different splitfract values. Difference of Ads are measured from two treatments.}
-\label{oneaccountClothing}
+\begin{table}[t]
 \centering
-\begin{tabular}{|c|c|}
+\caption{Prediction accuracy and p-value for different algorithms in dating treatment}
+\label{dating}
+\begin{tabular}{|l|l|l|}
 \hline
-\multicolumn{1}{|l|}{\textbf{splitfrac}} & \multicolumn{1}{l|}{\textbf{p-value}} \\ \hline
-0.1                                      & 0.499342                              \\ \hline
-0.2                                      & 0.249891                              \\ \hline
-0.3                                      & 0.06223                              \\ \hline
+Algorithm                    & Accuracy        & p-value         \\ \hline
+Ensemble Enumeration         & \textbf{0.59}           & \textbf{0.0068}          \\ \hline
+Ensemble Relaxed Enumeration & 0.56 & 0.055 \\ \hline
+Traditional Classifiers      & 0.555           & 0.0704          \\ \hline
 \end{tabular}
-
 \end{table}
 
+\begin{table}[t]
+\centering
+\caption{Prediction accuracy and p-value for different algorithms in cars treatment}
+\label{cars}
+\begin{tabular}{|l|l|l|}
+\hline
+Algorithm                    & Accuracy        & p-value         \\ \hline
+Ensemble Enumeration         & \textbf{0.8818}          & $<$0.0005          \\ \hline
+Ensemble Relaxed Enumeration & 0.8454 & $<$0.0005 \\ \hline
+Traditional Classifiers      & 0.8545           &  $<$0.0005         \\ \hline
+\end{tabular}
+\end{table}
 
-\section{Discussions}
-Several problems were encountered while collecting the data for the first part of the experiment in which the advertisements from Facebook were analyzed to ascertain if Facebook ads are in compliance to their privacy policy/guidelines. The list of problems is given below:
+\begin{table}[t]
+\centering
+\caption{Prediction accuracy and p-value for different algorithms in gender effects on job search treatment}
+\label{gender}
+\begin{tabular}{|l|l|l|}
+\hline
+Algorithm                    & Accuracy        & p-value         \\ \hline
+Ensemble Enumeration         & 0.515          & 0.3778          \\ \hline
+Ensemble Relaxed Enumeration & 0.55 & 0.0973 \\ \hline
+Traditional Classifiers      & 0.55           &  0.0929         \\ \hline
+\end{tabular}
+\end{table}
 
-First, in the experiments done based on Google ads, no user creations were required. For our experiment, ads could not be collected without creating profiles on Facebook. This was a major restriction since many profiles had to be created to run a single experiment.
+\subsection{Discussion}
+The results show that the performance of abstaining classifiers is better than traditional classifiers on the collected data.
+However, there are some limitations in the project.
 
-Second, several new accounts were created but none of them were provided with any advertisements. To improve the activity of these profiles, several Fan Pages were "Liked" and "Followed" and friends were added. Also several websites were visited while the user was logged into Facebook. None of these activities resulted in producing advertisements on the new users' Facebook page. This highly restricted the scalability of the experiment since the experiments had to be performed on existing users who had advertisements on their Facebook page.
+The first limitation is the size of data. In fact, there are only hundreds of browser agents because it takes a lot of time to collect online advertisements.
+Because if the small size of data, we cannot conclude that the results can be generalized to all cases.
+If the size of data can be scaled up, we might obtain significant results and then we will gain much more insights on the usage and the applications of abstaining classifiers.
 
-Third, unlike Google, Facebook does not provide the option of viewing what knowledge Facebook has acquired about the user. Therefore, it is impossible to know what information Facebook has gathered based on users' activities. Also, unlike Google, there is no option to opt-in or opt-out of interest based advertisements and no option to view or edit the interests of a particular user. This restricted the use of same profiles for different experiments.
+Second, the design of hypothesis set can be refined. 
+The ``Know What it Knows" model is designed to predict bounded incorrect results.
+However, due to the time limitation, we could only generate the hypothesis set by using different parameters in logistic regression model.
+We believe that if more complex design of hypothesis set and learning models are utilized, we will obtain much better performances on both prediction accuracy and p-value results. 
+\section{Conclusion and Future works}
+In the project, we proposed an auditing framework for online advertisement settings by using abstaining classifiers.
+We extended the tool ``AdFisher" by implementing two abstaining classifier algorithms: Ensemble Enumeration and Ensemble Relaxed Enumeration.
+The results show that the performance on abstaining classifiers are better than traditional model selection algorithms because abstaining classifiers output ``I don't know" on uncertain results.
 
-To get significant results and to scale up the experiments, there are some possible ways to show ads on new Facebook accounts.  
-For example, the visit of online shopping websites might lead to online shopping ads in new Facebook accounts. 
-After investigating the ways to show the ads on News Feed for new accounts, further experiments can be conducted to examine whether Facebook complies its Advertising Guidelines. 
-In addition, the next step would be to scale up the experiment for the comparison of different accounts in which ten browsers will be used to collect advertising data over 100 blocks so that a significant number of ads are gathered. 
-The experiment would be set up in such a way that five browsers will login as one user and the other five as another user. 
-Moreover, the next step for the experiment that finds the relationship between online shopping websites and ads would be to increase the online activities of the users by increasing the number of websites to be visited. 
-Also, the measurement can be scaled up so that more ads can be collected to determine if there is any significant difference in the ads served based on the online activity of the user.
-\newpage
-\section{Conclusion}
-In this project we extended AdFisher on Facebook advertisements.
-By our implementation, advertisements on Facebook can be easily collected by AdFisher.
-In the experiments we found that Facebook provides targeted advertisements to different users.
-However, we were not able to scale up the experiments because Facebook does not provide advertisements for newly created users.
-This limitation restricted us from obtaining significant results.
-To get more insight on the problem, further works are required to examine whether Facebook complies with their privacy policies.
+There are some possible future works on the project.
+First, in order to obtain more significant results, more data on online advertisements should be collected.
+More browser agents can be used to attain the goal.
+The other way to refine the work is to design more complex machine learning models.
+For example, the design of hypothesis set in abstaining classifiers is essential for significant results.
+Also, the proposed framework is flexible that it can combine different machine learning models in the learning process.
+By ensemble for different learning models, we believe that we will obtain higher accuracy on the prediction of browser agents, and then we will gain more insights on the application of auditing on privacy policies.  
 
 % if have a single appendix:
 %\appendix[Proof of the Zonklar Equations]
