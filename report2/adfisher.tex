@@ -444,12 +444,12 @@
 % in the abstract or keywords.
 \begin{abstract}
 We propose an auditing framework that can determine whether online advertisement privacy policies are violated.
-The framework utilizes abstaining classifiers, whether they can not only output positive and negative results but also ``I don't know" predictions.
-Such classifiers are useful to reduce the potential cost of privacy policy violation because they can reduce incorrect predictions by reporting `I don't know" outputs to human for auditing.
+The framework utilizes abstaining classifiers, where they can not only output positive and negative results but also ``I don't know" predictions.
+Such classifiers are useful to reduce the potential cost of privacy policy violation because they can reduce incorrect predictions by reporting ``I don't know" outputs to human for auditing.
 We implemented two abstaining classifier algorithms: Ensemble Enumeration and Ensemble Relaxed Enumeration.
-We found that compared to traditional classifier selection algorithms, the performance of the predictions are higher by abstaining classifiers. 
+We found that compared to traditional classifier selection algorithms, the performance of the predictions are better by abstaining classifiers. 
 This project is the first-ever study that combines abstaining classifiers and auditing applications.
-Further explorations including more data and more complex models can be utilized to get more insight into this field.
+Further explorations including more data and more complex models can be utilized to get more insight in this field.
 
 \end{abstract}
 
@@ -492,7 +492,7 @@ Further explorations including more data and more complex models can be utilized
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
 \IEEEPARstart{U}{sers} 
- on the internet are subjected to targeted advertising in which are provided to them based on their online activities. Most websites outsource their advertising to large third party networks which are dedicated for serving personalized and targeted ads. The users are concerned about these targeted advertisements and want to know what type of information is collected about them by these advertising networks. For this reason, Google, Yahoo, Microsoft etc. provide ad settings to provide transparency by giving information about what type of information is collected to the user. 
+ on the Internet are subjected to targeted advertising in which are provided to them based on their online activities. Most websites outsource their advertising to large third party networks which are dedicated for serving personalized and targeted ads. The users are concerned about these targeted advertisements and want to know what type of information is collected about them by these advertising networks. For this reason, Google, Yahoo, Microsoft etc. provide ad settings to provide transparency by giving information about what type of information is collected to the user. 
  
 When the users are subjected to targeted advertising, their privacy is in question. To mitigate this issue, different entities provide different privacy policies which elaborate on how the information obtained will be used. For example, Google states that it will not associate a cookie with sensitive categories, such as race, religion, sexual orientation or health \cite{google}. Facebook states that ``Ads may not assert or imply, directly or indirectly, within the ad content or by targeting, a user's personal characteristics within the following categories: race or ethnic origin; religion or philosophical belief; age; sexual orientation or sexual life ...." \cite{fb}. In this way, users are assured about how the data collected about them will and will not be used.
  
@@ -621,7 +621,7 @@ We will report the experimental results in Section IV, and state conclusions and
 % stfloats package.
 
 \section{Related Work}
-To analyze the interactions between Google's Ads, Ad-settings and user activity, an automated tool named AdFisher \cite{datta} was developed by Datta et. al. The tool works through automation by simulating the interest of users by visiting specific set of websites or by changing the Ad settings in Google. Then, it automates the collection of Google ads from websites and then analyzes it to find if there is a statistically significant difference between the groups of agents. The inputs given to this tool are the behaviors of the two groups and the measurements to make over the agents after the behavior is performed.
+To analyze the interactions between Google's Ads, Ad-settings and user activity, an automated tool named AdFisher \cite{datta} was developed by Datta \textit{et al.} The tool works through automation by simulating the interest of users by visiting specific set of websites or by changing the Ad settings in Google. Then, it automates the collection of Google ads from websites and then analyzes it to find if there is a statistically significant difference between the groups of agents. The inputs given to this tool are the behaviors of the two groups and the measurements to make over the agents after the behavior is performed.
 
 
 
