@@ -3,43 +3,43 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: adfisher.aux
 The style file: ieeetr.bst
 Database file #1: ./adfisher.bib
+Warning--entry type for "fb" isn't style-file defined
+--line 12 of file ./adfisher.bib
+Warning--entry type for "google" isn't style-file defined
+--line 18 of file ./adfisher.bib
 Warning--entry type for "selenium" isn't style-file defined
---line 20 of file ./adfisher.bib
-Repeated entry---line 71 of file ./adfisher.bib
- : @article{selenium
- :                  ,
-I'm skipping whatever remains of this entry
+--line 32 of file ./adfisher.bib
 Warning--empty year in datta
-You've used 7 entries,
+You've used 9 entries,
             1876 wiz_defined-function locations,
-            515 strings with 4551 characters,
-and the built_in function-call counts, 1626 in all, are:
-= -- 154
-> -- 42
+            521 strings with 4763 characters,
+and the built_in function-call counts, 1854 in all, are:
+= -- 170
+> -- 50
 < -- 0
-+ -- 18
-- -- 11
-* -- 97
-:= -- 223
++ -- 22
+- -- 13
+* -- 103
+:= -- 253
 add.period$ -- 6
-call.type$ -- 7
-change.case$ -- 7
+call.type$ -- 9
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 95
-empty$ -- 186
-format.name$ -- 11
-if$ -- 400
+cite$ -- 10
+duplicate$ -- 103
+empty$ -- 222
+format.name$ -- 13
+if$ -- 458
 int.to.chr$ -- 0
-int.to.str$ -- 7
+int.to.str$ -- 9
 missing$ -- 6
-newline$ -- 24
-num.names$ -- 7
-pop$ -- 36
+newline$ -- 30
+num.names$ -- 9
+pop$ -- 46
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 59
+skip$ -- 75
 stack$ -- 0
 substring$ -- 104
 swap$ -- 32
@@ -48,7 +48,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 16
-width$ -- 8
-write$ -- 60
-(There was 1 error message)
+while$ -- 18
+width$ -- 10
+write$ -- 72
+(There were 4 warnings)
